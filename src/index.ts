@@ -11,3 +11,5 @@ export * from './middlewares/error-handler';
 export * from './middlewares/authenticate';
 
 export * from './services/jwt';
+export * from './services/password';
+export * from './services/server';
