@@ -8,3 +8,6 @@ export * from './errors/unauthorized-request-error';
 
 export * from './middlewares/validate-request';
 export * from './middlewares/error-handler';
+export * from './middlewares/authenticate';
+
+export * from './services/jwt';
