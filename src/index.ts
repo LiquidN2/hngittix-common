@@ -6,6 +6,12 @@ export * from './errors/forbidden-request-error';
 export * from './errors/request-validation-error';
 export * from './errors/unauthorized-request-error';
 
+export * from './events/base-listener';
+export * from './events/base-publisher';
+export * from './events/subjects';
+export * from './events/ticket-created-event';
+export * from './events/ticket-updated-event';
+
 export * from './middlewares/validate-request';
 export * from './middlewares/error-handler';
 export * from './middlewares/authenticate';
