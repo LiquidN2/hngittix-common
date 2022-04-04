@@ -1,6 +1,6 @@
 {
   "name": "@hngittix/common",
-  "version": "1.0.11",
+  "version": "1.0.12",
   "description": "Dependencies shared between Gittix microservices",
   "main": "./build/index.js",
   "types": "./build/index.d.ts",
