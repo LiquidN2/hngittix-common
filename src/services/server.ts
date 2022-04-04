@@ -41,6 +41,14 @@ export const initializeServer = async (
         'http://nats-srv:4222'
       );
       console.log('🤝🤝🤝 Connected to NATS 🤝🤝🤝');
+
+      // CLose NATS connection upon signal interruption and termination
+      natsWrapper.client.on('close', () => {
+        console.log('NATS connection closed!');
+        process.exit();
+      });
+      process.on('SIGINT', () => natsWrapper.client.close());
+      process.on('SIGTERM', () => natsWrapper.client.close());
     } catch (e) {
       console.error('Unable to connect to NATS', e);
     }
