@@ -4,6 +4,7 @@ import { natsWrapper } from './../events/nats-wrapper';
 
 interface AppOptions {
   serviceName: string;
+  natsConnectionEnabled: boolean;
 }
 
 export const initializeServer = async (
@@ -25,7 +26,6 @@ export const initializeServer = async (
 
   // Connect to DB
   try {
-    console.log(`Connecting to ${SERVICE_NAME}...`);
     await mongoose.connect(process.env.MONGODB_URI);
     console.log(`🤝🤝🤝 Connected to ${SERVICE_NAME} DB 🤝🤝🤝`);
   } catch (e) {
@@ -33,12 +33,17 @@ export const initializeServer = async (
   }
 
   // Connect to NATS
-  try {
-    console.log('Connecting to NATS...');
-    await natsWrapper.connect('gittix', 'testclientid', 'http://nats-srv:4222');
-    console.log('🤝🤝🤝 Connected to NATS 🤝🤝🤝');
-  } catch (e) {
-    console.error('Unable to connect to NATS', e);
+  if (appOptions.natsConnectionEnabled) {
+    try {
+      await natsWrapper.connect(
+        'gittix',
+        'testclientid',
+        'http://nats-srv:4222'
+      );
+      console.log('🤝🤝🤝 Connected to NATS 🤝🤝🤝');
+    } catch (e) {
+      console.error('Unable to connect to NATS', e);
+    }
   }
 
   // Start the server
