@@ -11,6 +11,7 @@ export * from './events/base-publisher';
 export * from './events/nats-wrapper';
 export * from './events/subjects';
 export * from './events/ticket-created-event';
+export * from './events/ticket-deleted-event';
 export * from './events/ticket-updated-event';
 
 export * from './middlewares/validate-request';
