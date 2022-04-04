@@ -1,5 +1,6 @@
 import type { Express } from 'express';
 import mongoose from 'mongoose';
+import { natsWrapper } from './../events/nats-wrapper';
 
 interface AppOptions {
   serviceName: string;
@@ -29,6 +30,15 @@ export const initializeServer = async (
     console.log(`🤝🤝🤝 Connected to ${SERVICE_NAME} DB 🤝🤝🤝`);
   } catch (e) {
     console.error(`💥💥💥 Unable to connect to ${SERVICE_NAME} DB`, e);
+  }
+
+  // Connect to NATS
+  try {
+    console.log('Connecting to NATS...');
+    await natsWrapper.connect('gittix', 'testclientid', 'http://nats-srv:4222');
+    console.log('🤝🤝🤝 Connected to NATS 🤝🤝🤝');
+  } catch (e) {
+    console.error('Unable to connect to NATS', e);
   }
 
   // Start the server
