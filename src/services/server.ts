@@ -1,10 +1,10 @@
 import type { Express } from 'express';
 import mongoose from 'mongoose';
-import { natsWrapper } from './../events/nats-wrapper';
+// import { natsWrapper } from './../events/nats-wrapper';
 
 interface AppOptions {
   serviceName: string;
-  natsConnectionEnabled: boolean;
+  // natsConnectionEnabled: boolean;
 }
 
 export const initializeServer = async (
@@ -33,26 +33,26 @@ export const initializeServer = async (
   }
 
   // Connect to NATS
-  if (appOptions.natsConnectionEnabled) {
-    try {
-      await natsWrapper.connect(
-        'gittix',
-        'testclientid',
-        'http://nats-srv:4222'
-      );
-      console.log('🤝🤝🤝 Connected to NATS 🤝🤝🤝');
-
-      // CLose NATS connection upon signal interruption and termination
-      natsWrapper.client.on('close', () => {
-        console.log('NATS connection closed!');
-        process.exit();
-      });
-      process.on('SIGINT', () => natsWrapper.client.close());
-      process.on('SIGTERM', () => natsWrapper.client.close());
-    } catch (e) {
-      console.error('Unable to connect to NATS', e);
-    }
-  }
+  // if (appOptions.natsConnectionEnabled) {
+  //   try {
+  //     await natsWrapper.connect(
+  //       'gittix',
+  //       'testclientid',
+  //       'http://nats-srv:4222'
+  //     );
+  //     console.log('🤝🤝🤝 Connected to NATS 🤝🤝🤝');
+  //
+  //     // CLose NATS connection upon signal interruption and termination
+  //     natsWrapper.client.on('close', () => {
+  //       console.log('NATS connection closed!');
+  //       process.exit();
+  //     });
+  //     process.on('SIGINT', () => natsWrapper.client.close());
+  //     process.on('SIGTERM', () => natsWrapper.client.close());
+  //   } catch (e) {
+  //     console.error('Unable to connect to NATS', e);
+  //   }
+  // }
 
   // Start the server
   app.listen(PORT, () => {
