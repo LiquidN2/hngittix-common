@@ -21,3 +21,5 @@ export * from './middlewares/authenticate';
 export * from './services/jwt';
 export * from './services/password';
 export * from './services/server';
+
+export * from './test/utils';
