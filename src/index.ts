@@ -13,6 +13,7 @@ export * from './events/subjects';
 export * from './events/ticket-created-event';
 export * from './events/ticket-deleted-event';
 export * from './events/ticket-updated-event';
+export * from './events/types';
 
 export * from './middlewares/validate-request';
 export * from './middlewares/error-handler';
