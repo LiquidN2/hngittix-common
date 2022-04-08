@@ -44,7 +44,7 @@ export abstract class Listener<T extends Event> {
 
       this.onMessage(parsedData, msg);
 
-      msg.ack();
+      // msg.ack();
     });
   }
 }
