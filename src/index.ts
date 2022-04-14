@@ -8,6 +8,7 @@ export * from './errors/unauthorized-request-error';
 
 export * from './events/base-listener';
 export * from './events/base-publisher';
+export * from './events/expiration-complete-event';
 export * from './events/nats-wrapper';
 export * from './events/order-cancelled-event';
 export * from './events/order-created-event';
