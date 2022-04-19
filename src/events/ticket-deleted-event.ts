@@ -8,5 +8,6 @@ export interface TicketDeletedEvent {
     price: number;
     userId: string;
     version: number;
+    orderId: string | null;
   };
 }
